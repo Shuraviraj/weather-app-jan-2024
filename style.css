@@ -38,6 +38,13 @@ body {
     flex: 1;
     margin-right: 16px;
     font-size: 18px;
+    transition: background-color 0.6s ease-out, box-shadow 0.6s ease-out;
+}
+
+.search > input:hover,
+.search > input:focus {
+    background-color: rgb(224, 253, 141);
+    box-shadow: 5px 10px 20px rgba(0, 0, 0, 0.43);
 }
 
 .search > button {
@@ -48,6 +55,13 @@ body {
     width: 60px;
     height: 60px;
     cursor: pointer;
+    transition: background-color 0.2s ease-out, box-shadow 0.2s ease-out;
+}
+
+.search > button:hover,
+.search > button:focus {
+    background-color: rgb(167, 248, 68);
+    box-shadow: 5px 10px 20px rgba(0, 0, 0, 0.43);
 }
 
 .search > button > img {
@@ -92,4 +106,27 @@ body {
 .humidity, .wind {
     font-size: 28px;
     margin-top: -6px;
+}
+
+.weather {
+    display: none;
+}
+
+.loader {
+    margin: 30px auto;
+    width: 100px;
+    height: 100px;
+    border: 10px solid #ebfffc;
+    border-radius: 50%;
+    border-top: 10px solid rgb(1, 11, 193);
+    animation: loader 0.7s infinite linear;
+}
+
+@keyframes loader {
+    from {
+        rotate: 0deg;
+    }
+    to {
+        rotate: 360deg;
+    }
 }
