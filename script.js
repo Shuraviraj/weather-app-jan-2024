@@ -2,7 +2,7 @@ const apikey = "3353edeb6cf0ea706f64bcc40ee2ecec";
 const apiurl = "https://api.openweathermap.org/data/2.5/weather?units=metric&q="
 
 const searchBox = document.querySelector(".search>input");
-const searchBtn = document.querySelector(".search>button");
+const searchBtn = document.querySelector(".search>div>button");
 const loader = document.querySelector(".loader");
 const weatherElement = document.querySelector(".weather");
 const weatherIcon = document.querySelector(".weather-icon");
@@ -18,7 +18,6 @@ async function checkWeather(city) {
     document.querySelector(".temp").innerHTML = Math.round(data.main.temp) + "°C";
     document.querySelector(".humidity").innerHTML = data.main.humidity + "%";
     document.querySelector(".wind").innerHTML = data.wind.speed + "km/hr";
-    console.log(data);
 
     switch (data.weather[0].main) {
         case "Clouds": {
@@ -42,7 +41,7 @@ async function checkWeather(city) {
             break;
         }
     }
-    
+
     loader.style.display = "none";
     weatherElement.style.display = "block"
 }
@@ -51,4 +50,12 @@ function handleSearchButtonClick() {
     checkWeather(searchBox.value);
 }
 
+function handleKeyPress(event) {
+    if (event.key === "Enter") {
+        event.preventDefault();
+        checkWeather(searchBox.value);
+    }
+}
+
 searchBtn.addEventListener("click", handleSearchButtonClick);
+searchBtn.addEventListener("keypress", handleKeyPress);
